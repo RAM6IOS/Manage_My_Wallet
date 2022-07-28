@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var shouldPresentAddCardForm = false
+    
+    @Environment(\.managedObjectContext) var moc
+
+    @FetchRequest(sortDescriptors: [])private var cards: FetchedResults<Card>
     var body: some View {
         NavigationView{
             ScrollView{
+            if !cards.isEmpty {
                 TabView{
-                    ForEach(0..<5) { num in
+                    ForEach(cards) { card in
                         CreditCardView()
                             .padding(.bottom, 50)
                     }
@@ -21,7 +26,9 @@ struct ContentView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .frame(height: 280)
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-                .fullScreenCover(isPresented: $shouldPresentAddCardForm, onDismiss: nil) {
+                }
+                Spacer()
+                 .fullScreenCover(isPresented: $shouldPresentAddCardForm, onDismiss: nil) {
                     AddCardForm()
                 }
             }

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ManageMyWalletApp: App {
+    @StateObject private var dataController = DataController()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                //.environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
