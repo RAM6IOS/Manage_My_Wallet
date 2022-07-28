@@ -22,6 +22,18 @@ struct ContentView: View {
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
             .navigationTitle("Credit Cards")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    }, label: {
+                        Text("+ Card")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .bold))
+                            .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                            .background(Color.black)
+                            .cornerRadius(5)
+                                    })
+                                )
+                                    
         }
     }
 }
