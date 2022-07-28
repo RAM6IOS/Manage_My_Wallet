@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var shouldPresentAddCardForm = false
     var body: some View {
         NavigationView{
             ScrollView{
@@ -20,10 +21,14 @@ struct ContentView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .frame(height: 280)
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .fullScreenCover(isPresented: $shouldPresentAddCardForm, onDismiss: nil) {
+                    AddCardForm()
+                }
             }
             .navigationTitle("Credit Cards")
             .navigationBarItems(trailing:
                 Button(action: {
+                       shouldPresentAddCardForm.toggle()
                     }, label: {
                         Text("+ Card")
                             .foregroundColor(.white)
