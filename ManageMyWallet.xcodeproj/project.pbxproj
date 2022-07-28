@@ -11,6 +11,7 @@
 		2D25035F2892784A004A2849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25035E2892784A004A2849 /* ContentView.swift */; };
 		2D25036128927850004A2849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D25036028927850004A2849 /* Assets.xcassets */; };
 		2D25036428927850004A2849 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D25036328927850004A2849 /* Preview Assets.xcassets */; };
+		2D25036E28927ADD004A2849 /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25036D28927ADD004A2849 /* CreditCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		2D25035E2892784A004A2849 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2D25036028927850004A2849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D25036328927850004A2849 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2D25036D28927ADD004A2849 /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,8 @@
 		2D25035B2892784A004A2849 /* ManageMyWallet */ = {
 			isa = PBXGroup;
 			children = (
+				2D25036A28927A4E004A2849 /* View */,
 				2D25035C2892784A004A2849 /* ManageMyWalletApp.swift */,
-				2D25035E2892784A004A2849 /* ContentView.swift */,
 				2D25036028927850004A2849 /* Assets.xcassets */,
 				2D25036228927850004A2849 /* Preview Content */,
 			);
@@ -65,6 +67,15 @@
 				2D25036328927850004A2849 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2D25036A28927A4E004A2849 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2D25035E2892784A004A2849 /* ContentView.swift */,
+				2D25036D28927ADD004A2849 /* CreditCardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				2D25035F2892784A004A2849 /* ContentView.swift in Sources */,
 				2D25035D2892784A004A2849 /* ManageMyWalletApp.swift in Sources */,
+				2D25036E28927ADD004A2849 /* CreditCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
