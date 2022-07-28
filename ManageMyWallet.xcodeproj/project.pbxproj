@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0DF1292892C76A0074C968 /* ManageMyWallet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DF1272892C76A0074C968 /* ManageMyWallet.xcdatamodeld */; };
 		2D25035D2892784A004A2849 /* ManageMyWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25035C2892784A004A2849 /* ManageMyWalletApp.swift */; };
 		2D25035F2892784A004A2849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25035E2892784A004A2849 /* ContentView.swift */; };
 		2D25036128927850004A2849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D25036028927850004A2849 /* Assets.xcassets */; };
 		2D25036428927850004A2849 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D25036328927850004A2849 /* Preview Assets.xcassets */; };
 		2D25036E28927ADD004A2849 /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25036D28927ADD004A2849 /* CreditCardView.swift */; };
 		2D25037028928B25004A2849 /* AddCardForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25036F28928B25004A2849 /* AddCardForm.swift */; };
+		2D2503792892BA0C004A2849 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2503782892BA0C004A2849 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D0DF1282892C76A0074C968 /* ManageMyWallet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ManageMyWallet.xcdatamodel; sourceTree = "<group>"; };
 		2D2503592892784A004A2849 /* ManageMyWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageMyWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D25035C2892784A004A2849 /* ManageMyWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMyWalletApp.swift; sourceTree = "<group>"; };
 		2D25035E2892784A004A2849 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +26,7 @@
 		2D25036328927850004A2849 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2D25036D28927ADD004A2849 /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		2D25036F28928B25004A2849 /* AddCardForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardForm.swift; sourceTree = "<group>"; };
+		2D2503782892BA0C004A2849 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 		2D25035B2892784A004A2849 /* ManageMyWallet */ = {
 			isa = PBXGroup;
 			children = (
+				2D2503752892B9B1004A2849 /* ModelView */,
+				2D2503712892B724004A2849 /* Model */,
 				2D25036A28927A4E004A2849 /* View */,
 				2D25035C2892784A004A2849 /* ManageMyWalletApp.swift */,
 				2D25036028927850004A2849 /* Assets.xcassets */,
@@ -79,6 +85,22 @@
 				2D25036F28928B25004A2849 /* AddCardForm.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2D2503712892B724004A2849 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D0DF1272892C76A0074C968 /* ManageMyWallet.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2D2503752892B9B1004A2849 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				2D2503782892BA0C004A2849 /* DataController.swift */,
+			);
+			path = ModelView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +174,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D25035F2892784A004A2849 /* ContentView.swift in Sources */,
+				2D0DF1292892C76A0074C968 /* ManageMyWallet.xcdatamodeld in Sources */,
+				2D2503792892BA0C004A2849 /* DataController.swift in Sources */,
 				2D25035D2892784A004A2849 /* ManageMyWalletApp.swift in Sources */,
 				2D25036E28927ADD004A2849 /* CreditCardView.swift in Sources */,
 				2D25037028928B25004A2849 /* AddCardForm.swift in Sources */,
@@ -357,6 +381,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2D0DF1272892C76A0074C968 /* ManageMyWallet.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2D0DF1282892C76A0074C968 /* ManageMyWallet.xcdatamodel */,
+			);
+			currentVersion = 2D0DF1282892C76A0074C968 /* ManageMyWallet.xcdatamodel */;
+			path = ManageMyWallet.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2D2503512892784A004A2849 /* Project object */;
 }
