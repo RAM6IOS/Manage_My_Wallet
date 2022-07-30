@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddCardForm: View {
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     @State private var name = ""
     @State private var cardNumber = ""
@@ -50,7 +51,24 @@ struct AddCardForm: View {
             presentationMode.wrappedValue.dismiss()
         }, label: {
             Text("Cancel")
-        }))
+        }),trailing:
+          Button{
+           let newcard = Card(context: moc)
+            newcard.name = name
+            newcard.number = cardNumber
+            newcard.limit = Int32(limit) ?? 0
+            newcard.year = Int16(year)
+            newcard.month = Int16(month)
+            newcard.type  = cardType
+            newcard.timestamp = Date()
+            try? moc.save()
+            
+            
+            
+        } label:{
+            Text("Save")
+        }
+        )
 }
 
     }
