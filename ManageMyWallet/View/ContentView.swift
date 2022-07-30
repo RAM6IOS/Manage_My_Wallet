@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var shouldPresentAddCardForm = false
-    
     @Environment(\.managedObjectContext) var moc
-
     @FetchRequest(sortDescriptors: [])private var cards: FetchedResults<Card>
     var body: some View {
         NavigationView{
@@ -19,7 +17,7 @@ struct ContentView: View {
             if !cards.isEmpty {
                 TabView{
                     ForEach(cards) { card in
-                        CreditCardView()
+                        CreditCardView(card: card)
                             .padding(.bottom, 50)
                     }
                 }
@@ -45,7 +43,6 @@ struct ContentView: View {
                             .cornerRadius(5)
                                     })
                                 )
-                                    
         }
     }
 }

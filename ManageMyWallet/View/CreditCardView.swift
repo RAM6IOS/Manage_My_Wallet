@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
+
+
 
 struct CreditCardView: View {
+    var card : Card?
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Apple Blue Visa Card")
+            Text(card?.name ?? "")
                 .font(.system(size: 24, weight: .semibold))
             HStack {
-                Image("visa")
+                let imageName = card?.type?.lowercased() ?? ""
+                Image(imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 44)
@@ -22,9 +27,9 @@ struct CreditCardView: View {
                 Text("Balance: $5,000")
                     .font(.system(size: 18, weight: .semibold))
             }
-            Text("1234 1234 1234 1234")
+            Text(card?.number ?? "")
             
-            Text("Credit Limit: $50,000")
+            Text("Credit Limit: $\(card?.limit ?? 0 )")
             HStack { Spacer() }
         }
         .foregroundColor(.white)
