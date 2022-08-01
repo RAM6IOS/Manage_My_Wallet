@@ -14,6 +14,7 @@ struct CreditCardView: View {
     var card : Card
     @State private var shouldShowActionSheet = false
     @State private var shouldShowEditForm = false
+    @State private var refreshId = UUID()
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
