@@ -15,7 +15,6 @@ struct AddCardForm: View {
         self.card = card
         _name = State(initialValue: self.card?.name ?? "")
         _cardNumber = State(initialValue: self.card?.number ?? "")
-        
         _cardType = State(initialValue: self.card?.type ?? "Visa")
         
         if let limit = card?.limit {
