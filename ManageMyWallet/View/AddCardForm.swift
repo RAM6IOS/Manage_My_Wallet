@@ -8,6 +8,24 @@
 import SwiftUI
 
 struct AddCardForm: View {
+    
+    let card: Card?
+    
+    init(card: Card? = nil) {
+        self.card = card
+        _name = State(initialValue: self.card?.name ?? "")
+        _cardNumber = State(initialValue: self.card?.number ?? "")
+        
+        _cardType = State(initialValue: self.card?.type ?? "Visa")
+        
+        if let limit = card?.limit {
+            _limit = State(initialValue: String(limit))
+        }
+        
+        _month = State(initialValue: Int(self.card?.month ?? 1))
+        _year = State(initialValue: Int(self.card?.year ?? Int16(currentYear)))
+    }
+    
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     @State private var name = ""
@@ -53,7 +71,7 @@ struct AddCardForm: View {
             Text("Cancel")
         }),trailing:
           Button{
-           let newcard = Card(context: moc)
+            let newcard =  self.card != nil ? self.card! : Card(context: moc)
             newcard.name = name
             newcard.number = cardNumber
             newcard.limit = Int32(limit) ?? 0
@@ -62,9 +80,7 @@ struct AddCardForm: View {
             newcard.type  = cardType
             newcard.timestamp = Date()
             try? moc.save()
-            
-            
-            
+            presentationMode.wrappedValue.dismiss()
         } label:{
             Text("Save")
         }

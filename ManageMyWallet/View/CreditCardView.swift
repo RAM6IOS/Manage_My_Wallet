@@ -11,13 +11,34 @@ import CoreData
 
 
 struct CreditCardView: View {
-    var card : Card?
+    var card : Card
+    @State private var shouldShowActionSheet = false
+    @State private var shouldShowEditForm = false
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(card?.name ?? "")
-                .font(.system(size: 24, weight: .semibold))
             HStack {
-                let imageName = card?.type?.lowercased() ?? ""
+                Text(card.name ?? "")
+                    .font(.system(size: 24, weight: .semibold))
+                Spacer()
+                Button {
+                    shouldShowActionSheet.toggle()
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .font(.system(size: 28, weight: .bold))
+                }
+                .actionSheet(isPresented: $shouldShowActionSheet) {
+                        .init(title: Text(self.card.name ?? ""), message: Text("Options"), buttons: [
+                            .default(Text("Edit"), action: {
+                            shouldShowEditForm.toggle()
+                        }),
+                            .cancel()
+                        ])
+                }
+
+            }
+            
+            HStack {
+                let imageName = card.type?.lowercased() ?? ""
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
@@ -27,17 +48,25 @@ struct CreditCardView: View {
                 Text("Balance: $5,000")
                     .font(.system(size: 18, weight: .semibold))
             }
-            Text(card?.number ?? "")
             
-            Text("Credit Limit: $\(card?.limit ?? 0 )")
-            HStack { Spacer() }
+            
+            Text(card.number ?? "")
+            
+            HStack {
+                Text("Credit Limit: $\(card.limit)")
+                Spacer()
+                VStack(alignment: .trailing) {
+                    Text("Valid Thru")
+                    Text("\(String(format: "%02d", card.month))/\(String(card.year % 2000))")
+                }
+            }
         }
         .foregroundColor(.white)
         .padding()
         .background(
-            LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.blue]), startPoint: .top, endPoint: .bottom)
+                    LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.blue]), startPoint: .top, endPoint: .bottom)
 
-        )
+                )
         .overlay(RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.black.opacity(0.5), lineWidth: 1)
         )
@@ -45,12 +74,13 @@ struct CreditCardView: View {
         .shadow(radius: 5)
         .padding(.horizontal)
         .padding(.top, 8)
+        
+        .fullScreenCover(isPresented: $shouldShowEditForm) {
+            AddCardForm(card: card)
+        }
+
 
     }
 }
 
-struct CreditCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreditCardView()
-    }
-}
+
