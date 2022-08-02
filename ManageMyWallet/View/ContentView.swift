@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var shouldPresentAddCardForm = false
+    @State private var shouldShowAddTransactionForm = false
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [])private var cards:FetchedResults<Card>
     @FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
@@ -27,6 +28,26 @@ struct ContentView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .frame(height: 280)
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                
+                Text("Get started by adding your first transaction")
+                
+                Button {
+                    shouldShowAddTransactionForm.toggle()
+                } label: {
+                    Text("+ Transaction")
+                        .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
+                        .background(Color(.label))
+                        .foregroundColor(Color(.systemBackground))
+                        .font(.headline)
+                        .cornerRadius(5)
+                }
+                .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
+                    TransactionForm()
+                }
+                ForEach(transaction){ transactio in
+                   TransactionCard(transaction: transactio)
+                    
+                }
             } else{
                 VStack {
                     Text("You currently have no cards in the system.")
