@@ -17,6 +17,7 @@
 		2D2503792892BA0C004A2849 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2503782892BA0C004A2849 /* DataController.swift */; };
 		2DFD13B32899308B00348791 /* TransactionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B22899308B00348791 /* TransactionForm.swift */; };
 		2DFD13B5289938B800348791 /*  PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B4289938B800348791 /*  PhotoPickerView.swift */; };
+		2DFD13B728993E7B00348791 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B628993E7B00348791 /* TransactionCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		2D2503782892BA0C004A2849 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		2DFD13B22899308B00348791 /* TransactionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionForm.swift; sourceTree = "<group>"; };
 		2DFD13B4289938B800348791 /*  PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " PhotoPickerView.swift"; sourceTree = "<group>"; };
+		2DFD13B628993E7B00348791 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		2DFD13B12899307200348791 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				2DFD13B628993E7B00348791 /* TransactionCard.swift */,
 				2DFD13B22899308B00348791 /* TransactionForm.swift */,
 			);
 			path = Transaction;
@@ -192,6 +195,7 @@
 				2D0DF1292892C76A0074C968 /* ManageMyWallet.xcdatamodeld in Sources */,
 				2D2503792892BA0C004A2849 /* DataController.swift in Sources */,
 				2DFD13B5289938B800348791 /*  PhotoPickerView.swift in Sources */,
+				2DFD13B728993E7B00348791 /* TransactionCard.swift in Sources */,
 				2D25035D2892784A004A2849 /* ManageMyWalletApp.swift in Sources */,
 				2D25036E28927ADD004A2849 /* CreditCardView.swift in Sources */,
 				2D25037028928B25004A2849 /* AddCardForm.swift in Sources */,
