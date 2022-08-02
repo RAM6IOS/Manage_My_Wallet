@@ -10,7 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @State private var shouldPresentAddCardForm = false
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [])private var cards: FetchedResults<Card>
+    @FetchRequest(sortDescriptors: [])private var cards:FetchedResults<Card>
+    @FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
+   
+    
     var body: some View {
         NavigationView{
             ScrollView{
