@@ -29,25 +29,7 @@ struct ContentView: View {
                 .frame(height: 280)
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                 
-                Text("Get started by adding your first transaction")
-                
-                Button {
-                    shouldShowAddTransactionForm.toggle()
-                } label: {
-                    Text("+ Transaction")
-                        .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
-                        .background(Color(.label))
-                        .foregroundColor(Color(.systemBackground))
-                        .font(.headline)
-                        .cornerRadius(5)
-                }
-                .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
-                    TransactionForm()
-                }
-                ForEach(transaction){ transactio in
-                   TransactionCard(transaction: transactio)
-                    
-                }
+                TransactionsList()
             } else{
                 VStack {
                     Text("You currently have no cards in the system.")

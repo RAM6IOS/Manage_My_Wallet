@@ -15,6 +15,7 @@
 		2D25036E28927ADD004A2849 /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25036D28927ADD004A2849 /* CreditCardView.swift */; };
 		2D25037028928B25004A2849 /* AddCardForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25036F28928B25004A2849 /* AddCardForm.swift */; };
 		2D2503792892BA0C004A2849 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2503782892BA0C004A2849 /* DataController.swift */; };
+		2DCE08DD289AF1C7006277F7 /* TransactionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE08DC289AF1C6006277F7 /* TransactionsList.swift */; };
 		2DFD13B32899308B00348791 /* TransactionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B22899308B00348791 /* TransactionForm.swift */; };
 		2DFD13B5289938B800348791 /*  PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B4289938B800348791 /*  PhotoPickerView.swift */; };
 		2DFD13B728993E7B00348791 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B628993E7B00348791 /* TransactionCard.swift */; };
@@ -30,6 +31,7 @@
 		2D25036D28927ADD004A2849 /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		2D25036F28928B25004A2849 /* AddCardForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardForm.swift; sourceTree = "<group>"; };
 		2D2503782892BA0C004A2849 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		2DCE08DC289AF1C6006277F7 /* TransactionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsList.swift; sourceTree = "<group>"; };
 		2DFD13B22899308B00348791 /* TransactionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionForm.swift; sourceTree = "<group>"; };
 		2DFD13B4289938B800348791 /*  PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " PhotoPickerView.swift"; sourceTree = "<group>"; };
 		2DFD13B628993E7B00348791 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				2DFD13B628993E7B00348791 /* TransactionCard.swift */,
 				2DFD13B22899308B00348791 /* TransactionForm.swift */,
+				2DCE08DC289AF1C6006277F7 /* TransactionsList.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				2D2503792892BA0C004A2849 /* DataController.swift in Sources */,
 				2DFD13B5289938B800348791 /*  PhotoPickerView.swift in Sources */,
 				2DFD13B728993E7B00348791 /* TransactionCard.swift in Sources */,
+				2DCE08DD289AF1C7006277F7 /* TransactionsList.swift in Sources */,
 				2D25035D2892784A004A2849 /* ManageMyWalletApp.swift in Sources */,
 				2D25036E28927ADD004A2849 /* CreditCardView.swift in Sources */,
 				2D25037028928B25004A2849 /* AddCardForm.swift in Sources */,
