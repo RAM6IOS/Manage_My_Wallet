@@ -16,6 +16,8 @@ private let dateFormatter: DateFormatter = {
 
 struct TransactionCard: View {
     var transaction: CardTransaction
+    @State var shouldPresentActionSheet = false
+    @Environment(\.managedObjectContext) var moc
     var body: some View {
         VStack{
             HStack{
@@ -29,12 +31,20 @@ struct TransactionCard: View {
                 Spacer()
                 VStack(alignment: .trailing){
                     Button{
-                        
+                        shouldPresentActionSheet.toggle()
                     } label: {
                         Image(systemName: "ellipsis")
                             .font(.system(size: 24))
                     }
                     .padding(EdgeInsets(top: 6, leading: 8, bottom: 4, trailing: 0))
+                    .confirmationDialog("Select a color", isPresented: $shouldPresentActionSheet, titleVisibility: .visible) {
+                        Button{
+                            handleDelete()
+                        } label: {
+                            Text("Edita")
+                        }
+                        
+                    }
                     Text(String(format: "$%.2f", transaction.amount  ))
                 }
             }
@@ -50,6 +60,20 @@ struct TransactionCard: View {
         .cornerRadius(5)
         .shadow(radius: 5)
         .padding()
+    }
+    
+    private func handleDelete() {
+        withAnimation {
+            do {
+                
+                
+                moc.delete(transaction)
+                
+                try moc.save()
+            } catch {
+                print("Failed to delete transaction: ", error)
+            }
+        }
     }
 }
 
