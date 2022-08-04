@@ -38,8 +38,9 @@ struct ContentView: View {
                 .frame(height: 280)
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                 .onAppear {
-                    self.selectedCardHash = cards.first?.hash ?? -1
-                }
+                self.selectedCardHash = cards.first?.hash ?? -1
+               }
+                
                 if let firstIndex = cards.firstIndex(where: {$0.hash == selectedCardHash}) {
                     let card = self.cards[firstIndex]
                     TransactionsList(card: card)
@@ -68,7 +69,9 @@ struct ContentView: View {
                 Spacer()
                 
                  .fullScreenCover(isPresented: $shouldPresentAddCardForm, onDismiss: nil) {
-                     AddCardForm() 
+                     AddCardForm(card: nil) { card in
+                         self.selectedCardHash = card.hash
+                     }
                 }
             }
             .navigationTitle("Credit Cards")

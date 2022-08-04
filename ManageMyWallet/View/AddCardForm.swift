@@ -10,9 +10,12 @@ import SwiftUI
 struct AddCardForm: View {
     
     let card: Card?
+    var didAddCard: ((Card) ->())? = nil
     
-    init(card: Card? = nil) {
+    init(card: Card? = nil , didAddCard: ((Card) ->())? = nil) {
+        
         self.card = card
+        self.didAddCard = didAddCard
         _name = State(initialValue: self.card?.name ?? "")
         _cardNumber = State(initialValue: self.card?.number ?? "")
         _cardType = State(initialValue: self.card?.type ?? "Visa")
@@ -78,7 +81,9 @@ struct AddCardForm: View {
             newcard.month = Int16(month)
             newcard.type  = cardType
             newcard.timestamp = Date()
+            didAddCard?(newcard)
             try? moc.save()
+           
             presentationMode.wrappedValue.dismiss()
         } label:{
             Text("Save")
