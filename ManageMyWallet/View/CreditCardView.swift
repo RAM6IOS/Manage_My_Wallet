@@ -12,6 +12,7 @@ import CoreData
 
 struct CreditCardView: View {
     var card : Card
+    @Environment(\.managedObjectContext) var moc
     @State private var shouldShowActionSheet = false
     @State private var shouldShowEditForm = false
     @State private var refreshId = UUID()
@@ -27,15 +28,18 @@ struct CreditCardView: View {
                     Image(systemName: "ellipsis")
                         .font(.system(size: 28, weight: .bold))
                 }
-                .actionSheet(isPresented: $shouldShowActionSheet) {
-                        .init(title: Text(self.card.name ?? ""), message: Text("Options"), buttons: [
-                            .default(Text("Edit"), action: {
-                            shouldShowEditForm.toggle()
-                        }),
-                            .cancel()
-                        ])
+                .confirmationDialog("Select a color", isPresented: $shouldShowActionSheet, titleVisibility: .visible) {
+                    Button{
+                        handleDelete()
+                    } label: {
+                        Text("Dlita")
+                    }
+                    Button{
+                        shouldShowEditForm.toggle()
+                    } label: {
+                        Text("Edit")
+                    }
                 }
-
             }
             
             HStack {
@@ -81,6 +85,16 @@ struct CreditCardView: View {
         }
 
 
+    }
+    private func handleDelete() {
+        withAnimation {
+            do {
+                moc.delete(card)
+                try moc.save()
+            } catch {
+                print("Failed to delete transaction: ", error)
+            }
+        }
     }
 }
 
