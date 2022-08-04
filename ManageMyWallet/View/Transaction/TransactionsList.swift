@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct TransactionsList: View {
+    let card: Card
+    init(card: Card) {
+        self.card = card
+        
+        fetchRequest = FetchRequest<CardTransaction>(entity: CardTransaction.entity(), sortDescriptors: [
+            .init(key: "timestamp", ascending: false)
+        ], predicate: .init(format: "card == %@", self.card))
+    }
+    var fetchRequest: FetchRequest<CardTransaction>
+    
     @State private var shouldShowAddTransactionForm = false
-    @FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
+    //@FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
     @Environment(\.managedObjectContext) var moc
     var body: some View {
         VStack{
@@ -26,9 +36,9 @@ struct TransactionsList: View {
                     .cornerRadius(5)
             }
             .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
-               TransactionForm()
+               TransactionForm(card: card)
             }
-            ForEach(transaction){ transactio in
+            ForEach(fetchRequest.wrappedValue){ transactio in
                TransactionCard(transaction: transactio)
                 
             }
@@ -38,7 +48,15 @@ struct TransactionsList: View {
 }
 
 struct TransactionsList_Previews: PreviewProvider {
+    static let firstCard: Card? = {
+        let context =  DataController().container.viewContext
+        let request = Card.fetchRequest()
+        request.sortDescriptors = [.init(key: "timestamp", ascending: false)]
+        return try? context.fetch(request).first
+    }()
     static var previews: some View {
-        TransactionsList()
+        if let card = firstCard {
+            TransactionsList(card: card)
+        }
     }
 }

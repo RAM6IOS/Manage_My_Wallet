@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TransactionForm: View {
+    let card: Card
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var moc
     @State private var name = ""
@@ -55,6 +56,7 @@ struct TransactionForm: View {
                transaction.timestamp = date
                transaction.amount = Float(amount) ?? 0
                transaction.photoData = photoData
+               transaction.card = card
                try? moc.save()
                dismiss()
            } label: {
@@ -65,7 +67,15 @@ struct TransactionForm: View {
 }
 
 struct TransactionForm_Previews: PreviewProvider {
+    static let firstCard: Card? = {
+        let context =  DataController().container.viewContext
+        let request = Card.fetchRequest()
+        request.sortDescriptors = [.init(key: "timestamp", ascending: false)]
+        return try? context.fetch(request).first
+    }()
     static var previews: some View {
-        TransactionForm()
+        if let card = firstCard {
+        TransactionForm(card: card)
+        }
     }
 }
