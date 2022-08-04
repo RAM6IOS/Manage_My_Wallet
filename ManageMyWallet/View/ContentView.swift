@@ -13,23 +13,39 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [])private var cards:FetchedResults<Card>
     @FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
-   
+    @State private var selectedCardHash = -1
     
     var body: some View {
         NavigationView{
             ScrollView{
             if !cards.isEmpty {
+                /*
                 TabView{
                     ForEach(cards) { card in
                         CreditCardView(card: card)
                             .padding(.bottom, 50)
                     }
                 }
+                 */
+                TabView(selection: $selectedCardHash) {
+                    ForEach(cards) { card in
+                        CreditCardView(card: card)
+                            .padding(.bottom, 50)
+                            .tag(card.hash)
+                    }
+                }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .frame(height: 280)
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .onAppear {
+                    self.selectedCardHash = cards.first?.hash ?? -1
+                }
+                if let firstIndex = cards.firstIndex(where: {$0.hash == selectedCardHash}) {
+                    let card = self.cards[firstIndex]
+                    TransactionsList(card: card)
+                }
                 
-                TransactionsList()
+                
             } else{
                 VStack {
                     Text("You currently have no cards in the system.")
@@ -50,8 +66,9 @@ struct ContentView: View {
                 }.font(.system(size: 22, weight: .semibold))
             }
                 Spacer()
+                
                  .fullScreenCover(isPresented: $shouldPresentAddCardForm, onDismiss: nil) {
-                    AddCardForm()
+                     AddCardForm() 
                 }
             }
             .navigationTitle("Credit Cards")
