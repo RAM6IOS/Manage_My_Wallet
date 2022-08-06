@@ -17,8 +17,14 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="transactions" inverseEntity="Card"/>
     </entity>
+    <entity name="TransactionCategory" representedClassName="TransactionCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="colorData" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="Card" positionX="-63" positionY="-18" width="128" height="149"/>
         <element name="CardTransaction" positionX="-63" positionY="36" width="128" height="104"/>
+        <element name="TransactionCategory" positionX="-54" positionY="54" width="128" height="74"/>
     </elements>
 </model>
