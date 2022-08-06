@@ -79,7 +79,6 @@ struct CreditCardView: View {
         .shadow(radius: 5)
         .padding(.horizontal)
         .padding(.top, 8)
-        
         .fullScreenCover(isPresented: $shouldShowEditForm) {
             AddCardForm(card: card)
         }

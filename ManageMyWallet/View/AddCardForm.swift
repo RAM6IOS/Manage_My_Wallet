@@ -81,9 +81,9 @@ struct AddCardForm: View {
             newcard.month = Int16(month)
             newcard.type  = cardType
             newcard.timestamp = Date()
-            didAddCard?(newcard)
+            
             try? moc.save()
-           
+            didAddCard?(newcard)
             presentationMode.wrappedValue.dismiss()
         } label:{
             Text("Save")

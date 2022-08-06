@@ -11,8 +11,7 @@ struct ContentView: View {
     @State private var shouldPresentAddCardForm = false
     @State private var shouldShowAddTransactionForm = false
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [])private var cards:FetchedResults<Card>
-    @FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Card.timestamp, ascending: false)],animation: .default)private var cards:FetchedResults<Card>
     @State private var selectedCardHash = -1
     
     var body: some View {
