@@ -16,6 +16,8 @@
 		2D25037028928B25004A2849 /* AddCardForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25036F28928B25004A2849 /* AddCardForm.swift */; };
 		2D2503792892BA0C004A2849 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2503782892BA0C004A2849 /* DataController.swift */; };
 		2DCE08DD289AF1C7006277F7 /* TransactionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE08DC289AF1C6006277F7 /* TransactionsList.swift */; };
+		2DF75911289EDC4300BE8C24 /*  CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF75910289EDC4300BE8C24 /*  CategoriesListView.swift */; };
+		2DF75916289EDEC700BE8C24 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF75915289EDEC700BE8C24 /* ColorExtension.swift */; };
 		2DFD13B32899308B00348791 /* TransactionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B22899308B00348791 /* TransactionForm.swift */; };
 		2DFD13B5289938B800348791 /*  PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B4289938B800348791 /*  PhotoPickerView.swift */; };
 		2DFD13B728993E7B00348791 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B628993E7B00348791 /* TransactionCard.swift */; };
@@ -32,6 +34,8 @@
 		2D25036F28928B25004A2849 /* AddCardForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardForm.swift; sourceTree = "<group>"; };
 		2D2503782892BA0C004A2849 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		2DCE08DC289AF1C6006277F7 /* TransactionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsList.swift; sourceTree = "<group>"; };
+		2DF75910289EDC4300BE8C24 /*  CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " CategoriesListView.swift"; sourceTree = "<group>"; };
+		2DF75915289EDEC700BE8C24 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		2DFD13B22899308B00348791 /* TransactionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionForm.swift; sourceTree = "<group>"; };
 		2DFD13B4289938B800348791 /*  PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " PhotoPickerView.swift"; sourceTree = "<group>"; };
 		2DFD13B628993E7B00348791 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
@@ -67,6 +71,7 @@
 		2D25035B2892784A004A2849 /* ManageMyWallet */ = {
 			isa = PBXGroup;
 			children = (
+				2DF75912289EDE5D00BE8C24 /* Extension */,
 				2D2503752892B9B1004A2849 /* ModelView */,
 				2D2503712892B724004A2849 /* Model */,
 				2D25036A28927A4E004A2849 /* View */,
@@ -113,12 +118,21 @@
 			path = ModelView;
 			sourceTree = "<group>";
 		};
+		2DF75912289EDE5D00BE8C24 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2DF75915289EDEC700BE8C24 /* ColorExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		2DFD13B12899307200348791 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
 				2DFD13B628993E7B00348791 /* TransactionCard.swift */,
 				2DFD13B22899308B00348791 /* TransactionForm.swift */,
 				2DCE08DC289AF1C6006277F7 /* TransactionsList.swift */,
+				2DF75910289EDC4300BE8C24 /*  CategoriesListView.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -195,6 +209,8 @@
 			files = (
 				2D25035F2892784A004A2849 /* ContentView.swift in Sources */,
 				2DFD13B32899308B00348791 /* TransactionForm.swift in Sources */,
+				2DF75911289EDC4300BE8C24 /*  CategoriesListView.swift in Sources */,
+				2DF75916289EDEC700BE8C24 /* ColorExtension.swift in Sources */,
 				2D0DF1292892C76A0074C968 /* ManageMyWallet.xcdatamodeld in Sources */,
 				2D2503792892BA0C004A2849 /* DataController.swift in Sources */,
 				2DFD13B5289938B800348791 /*  PhotoPickerView.swift in Sources */,
