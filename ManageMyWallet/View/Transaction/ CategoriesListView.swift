@@ -16,10 +16,21 @@ struct CategoriesListView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \TransactionCategory.timestamp, ascending: false)],
         animation: .default)
     private var categories: FetchedResults<TransactionCategory>
+   
+    @Binding var selectedCategories: Set<TransactionCategory>
     var body: some View {
         Form{
             Section(header: Text("Select a category")){
                 ForEach(categories) { category in
+                    Button{
+                        if selectedCategories.contains(category) {
+                            selectedCategories.remove(category)
+                        } else {
+                            selectedCategories.insert(category)
+                        }
+                    } label: {
+                        
+                    
                     HStack(spacing: 12) {
                         if let data = category.colorData, let uiColor = UIColor.color(data: data) {
                             let color = Color(uiColor)
@@ -29,8 +40,11 @@ struct CategoriesListView: View {
                         }
                         Text(category.name ?? "")
                         Spacer()
+                        if selectedCategories.contains(category) {
+                        Image(systemName: "checkmark")
+                        }
                     }
-                    
+                    }
                 }
                 .onDelete { indexSet in
                     indexSet.forEach { i in
@@ -76,6 +90,6 @@ struct CategoriesListView: View {
 
 struct CategoriesListView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesListView()
+        CategoriesListView( selectedCategories: .constant(.init()))
     }
 }
