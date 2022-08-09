@@ -76,6 +76,7 @@ struct TransactionForm: View {
                transaction.amount = Float(amount) ?? 0
                transaction.photoData = photoData
                transaction.card = card
+               transaction.categories = selectedCategories as NSSet
                try? moc.save()
                dismiss()
            } label: {
