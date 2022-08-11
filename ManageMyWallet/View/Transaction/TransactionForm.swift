@@ -46,6 +46,12 @@ struct TransactionForm: View {
                        }
                        
                    }
+                   .onDelete { indexSet in
+                       indexSet.forEach { i in
+                           moc.delete(sortedByTimestampCategories[i])
+                       }
+                       try? moc.save()
+                   }
                }
                Section("Photo/Receipt"){
                    Button {
