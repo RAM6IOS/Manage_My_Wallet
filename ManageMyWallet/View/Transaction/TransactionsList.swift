@@ -19,10 +19,12 @@ struct TransactionsList: View {
     var fetchRequest: FetchRequest<CardTransaction>
     
     @State private var shouldShowAddTransactionForm = false
+    @State private var shouldShowFilterSheet = false
     //@FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
     @Environment(\.managedObjectContext) var moc
     var body: some View {
         VStack{
+            if fetchRequest.wrappedValue.isEmpty {
             Text("Get started by adding your first transaction")
             
             Button {
@@ -35,14 +37,55 @@ struct TransactionsList: View {
                     .font(.headline)
                     .cornerRadius(5)
             }
-            .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
-               TransactionForm(card: card)
-            }
+            
+            } else{
+                HStack{
+                    Spacer()
+                    Button {
+                        shouldShowAddTransactionForm.toggle()
+                    } label: {
+                        Text("+ Transaction")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color(.systemBackground))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 6)
+                            .background(Color(.label))
+                            .cornerRadius(5)
+                    }
+                    
+                    Button {
+                        shouldShowFilterSheet.toggle()
+                    } label: {
+                        HStack {
+                            
+                            Image(systemName: "line.horizontal.3.decrease.circle")
+                            Text("Filter")
+                        }
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color(.systemBackground))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 6)
+                            .background(Color(.label))
+                            .cornerRadius(5)
+                            .sheet(isPresented: $shouldShowFilterSheet) {
+                                FilterSheet { categories in
+                                    // how exactly do you perform the filtering???
+                                }
+                            }
+                    }
+                    
+                    
+                }
+                .padding(.horizontal)
             ForEach(fetchRequest.wrappedValue){ transactio in
                TransactionCard(transaction: transactio)
                 
             }
+            }
             
+        }
+        .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
+           TransactionForm(card: card)
         }
     }
 }
