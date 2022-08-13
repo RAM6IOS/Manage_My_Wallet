@@ -17,6 +17,7 @@ struct TransactionsList: View {
         ], predicate: .init(format: "card == %@", self.card))
     }
     var fetchRequest: FetchRequest<CardTransaction>
+    @State var selectedCategories = Set<TransactionCategory>()
     
     @State private var shouldShowAddTransactionForm = false
     @State private var shouldShowFilterSheet = false
@@ -68,8 +69,9 @@ struct TransactionsList: View {
                             .background(Color(.label))
                             .cornerRadius(5)
                             .sheet(isPresented: $shouldShowFilterSheet) {
-                                FilterSheet { categories in
-                                    // how exactly do you perform the filtering???
+                                FilterSheet(selectedCategories: selectedCategories) { categories in
+                                    
+                                    selectedCategories = categories
                                 }
                             }
                     }
@@ -77,7 +79,7 @@ struct TransactionsList: View {
                     
                 }
                 .padding(.horizontal)
-            ForEach(fetchRequest.wrappedValue){ transactio in
+            ForEach(filterTransactions(selectedCategories: self.selectedCategories)){ transactio in
                TransactionCard(transaction: transactio)
                 
             }
@@ -88,6 +90,86 @@ struct TransactionsList: View {
            TransactionForm(card: card)
         }
     }
+    private func filterTransactions(selectedCategories: Set<TransactionCategory>) -> [CardTransaction] {
+        if selectedCategories.isEmpty {
+            return Array(fetchRequest.wrappedValue)
+        }
+        return fetchRequest.wrappedValue.filter { transaction in
+            var shouldKeep = false
+            if let categories = transaction.categories as? Set<TransactionCategory> {
+                categories.forEach({ category in
+                    if selectedCategories.contains(category) {
+                        shouldKeep = true
+                    }
+                })
+            }
+            return shouldKeep
+        }
+    }
+    
+    
+    struct FilterSheet2: View {
+        
+        @State var selectedCategories: Set<TransactionCategory>
+        let didSaveFilters: (Set<TransactionCategory>) -> ()
+        
+        @Environment(\.managedObjectContext) private var viewContext
+
+        @FetchRequest(
+            sortDescriptors: [NSSortDescriptor(keyPath: \TransactionCategory.timestamp, ascending: false)],
+            animation: .default)
+        private var categories: FetchedResults<TransactionCategory>
+        
+    //    @State var selectedCategories = Set<TransactionCategory>()
+        
+        var body: some View {
+            NavigationView {
+                Form {
+                    ForEach(categories) { category in
+                        Button {
+                            if selectedCategories.contains(category) {
+                                selectedCategories.remove(category)
+                            } else {
+                                selectedCategories.insert(category)
+                            }
+                            
+                        } label: {
+                            HStack(spacing: 12) {
+                                if let data = category.colorData, let uiColor = UIColor.color(data: data) {
+                                    let color = Color(uiColor)
+                                    Spacer()
+                                        .frame(width: 30, height: 10)
+                                        .background(color)
+                                }
+                                Text(category.name ?? "")
+                                
+                                    .foregroundColor(Color(.label))
+                                Spacer()
+                                
+                                if selectedCategories.contains(category) {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                        }
+                    }
+                }.navigationTitle("Select filters")
+                    .navigationBarItems(trailing: saveButton)
+            }
+        }
+        
+        @Environment(\.presentationMode) var presentationMode
+        
+        private var saveButton: some View {
+            Button {
+                didSaveFilters(selectedCategories)
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("Save")
+            }
+
+        }
+    }
+
 }
 
 struct TransactionsList_Previews: PreviewProvider {

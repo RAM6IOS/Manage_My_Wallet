@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct FilterSheet: View {
+    /*
     let didSaveFilters: (Set<TransactionCategory>) -> ()
+   @State var selectedCategories: Set<TransactionCategory>
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
@@ -18,7 +20,20 @@ struct FilterSheet: View {
         animation: .default)
     private var categories: FetchedResults<TransactionCategory>
     
-    @State var selectedCategories = Set<TransactionCategory>()
+    //@State var selectedCategories : Set<TransactionCategory>
+ */
+    
+ @State var selectedCategories: Set<TransactionCategory>
+ let didSaveFilters: (Set<TransactionCategory>) -> ()
+ 
+ @Environment(\.managedObjectContext) private var viewContext
+
+ @FetchRequest(
+     sortDescriptors: [NSSortDescriptor(keyPath: \TransactionCategory.timestamp, ascending: false)],
+     animation: .default)
+ private var categories: FetchedResults<TransactionCategory>
+ @Environment(\.presentationMode) var presentationMode
+     
     var body: some View {
         NavigationView {
             Form {
@@ -63,5 +78,4 @@ struct FilterSheet: View {
 
     }
 }
-
 
