@@ -12,6 +12,19 @@ import CoreData
 
 struct CreditCardView: View {
     var card : Card
+    init(card: Card) {
+        self.card = card
+        
+        // lets kinda look at all the transactions for our card
+        
+        fetchRequest = FetchRequest<CardTransaction>(entity: CardTransaction.entity(), sortDescriptors: [
+            .init(key: "timestamp", ascending: false)
+        ], predicate: .init(format: "card == %@", self.card))
+        
+        
+    }
+    
+    var fetchRequest: FetchRequest<CardTransaction>
     @Environment(\.managedObjectContext) var moc
     @State private var shouldShowActionSheet = false
     @State private var shouldShowEditForm = false
@@ -50,15 +63,20 @@ struct CreditCardView: View {
                     .frame(height: 44)
                     .clipped()
                 Spacer()
-                Text("Balance: $5,000")
-                    .font(.system(size: 18, weight: .semibold))
+                if let balance = fetchRequest.wrappedValue.reduce(0, {$0 + $1.amount }) {
+                    Text("Balance: $\(String(format: "%.2f", balance))")
+                        .font(.system(size: 18, weight: .semibold))
+                }
+                
             }
             
             
             Text(card.number ?? "")
             
             HStack {
-                Text("Credit Limit: $\(card.limit)")
+                let balance = fetchRequest.wrappedValue.reduce(0, {$0 + $1.amount })
+                
+                Text("Credit Limit: $\(card.limit - Int32(balance))")
                 Spacer()
                 VStack(alignment: .trailing) {
                     Text("Valid Thru")
