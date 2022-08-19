@@ -13,8 +13,10 @@ struct ManageMyWalletApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .navigationBarHidden(true)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 //.environment(\.managedObjectContext, dataController.container.viewContext)
+                .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
