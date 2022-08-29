@@ -15,7 +15,16 @@ struct ContentView: View {
     @State private var selectedCardHash = -1
     
     var body: some View {
+       
+            
+            
+                
         NavigationView{
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+               
+                
             ScrollView{
             if !cards.isEmpty {
                 /*
@@ -41,10 +50,10 @@ struct ContentView: View {
                }
                 
                 if let firstIndex = cards.firstIndex(where: {$0.hash == selectedCardHash}) {
+                    
                     let card = self.cards[firstIndex]
                     TransactionsList(card: card)
                 }
-                
                 
             } else{
                 VStack {
@@ -62,7 +71,6 @@ struct ContentView: View {
                     .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
                     .background(Color(.label))
                     .cornerRadius(5)
-
                 }.font(.system(size: 22, weight: .semibold))
             }
                 Spacer()
@@ -72,6 +80,7 @@ struct ContentView: View {
                          self.selectedCardHash = card.hash
                      }
                 }
+            
             }
             .navigationTitle("Credit Cards")
             .navigationBarItems(trailing:
@@ -86,9 +95,11 @@ struct ContentView: View {
                             .cornerRadius(5)
                                     })
                                 )
+            }
+        }
         }
     }
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

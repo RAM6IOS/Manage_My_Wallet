@@ -24,6 +24,7 @@ struct TransactionsList: View {
     //@FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
     @Environment(\.managedObjectContext) var moc
     var body: some View {
+        
         VStack{
             if fetchRequest.wrappedValue.isEmpty {
             Text("Get started by adding your first transaction")
@@ -89,6 +90,7 @@ struct TransactionsList: View {
         .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
            TransactionForm(card: card)
         }
+        
     }
     private func filterTransactions(selectedCategories: Set<TransactionCategory>) -> [CardTransaction] {
         if selectedCategories.isEmpty {
