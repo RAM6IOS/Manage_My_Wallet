@@ -61,12 +61,13 @@ struct ContentView: View {
                         .padding(.horizontal, 48)
                         .padding(.vertical)
                         .multilineTextAlignment(.center)
+                        .foregroundColor(Color.white)
                     
                     Button {
                         shouldPresentAddCardForm.toggle()
                     } label: {
                         Text("+ Add Your First Card")
-                            .foregroundColor(Color(.systemBackground))
+                            .foregroundColor(Color.white)
                     }
                     .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
                     .background(Color(.label))
@@ -82,7 +83,9 @@ struct ContentView: View {
                 }
             
             }
-            .navigationTitle("Credit Cards")
+            .navigationTitle("Credit Cards"
+                                
+            )
             .navigationBarItems(trailing:
                 Button(action: {
                        shouldPresentAddCardForm.toggle()

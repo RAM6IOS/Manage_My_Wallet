@@ -28,6 +28,7 @@ struct TransactionsList: View {
         VStack{
             if fetchRequest.wrappedValue.isEmpty {
             Text("Get started by adding your first transaction")
+                    .foregroundColor(Color.white)
             
             Button {
                 shouldShowAddTransactionForm.toggle()
@@ -48,7 +49,7 @@ struct TransactionsList: View {
                     } label: {
                         Text("+ Transaction")
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color(.systemBackground))
+                            .foregroundColor(Color.white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 6)
                             .background(Color(.label))
@@ -64,7 +65,7 @@ struct TransactionsList: View {
                             Text("Filter")
                         }
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color(.systemBackground))
+                            .foregroundColor(Color.white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 6)
                             .background(Color(.label))
