@@ -22,6 +22,7 @@
 		2DFD13B32899308B00348791 /* TransactionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B22899308B00348791 /* TransactionForm.swift */; };
 		2DFD13B5289938B800348791 /*  PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B4289938B800348791 /*  PhotoPickerView.swift */; };
 		2DFD13B728993E7B00348791 /* TransactionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD13B628993E7B00348791 /* TransactionCard.swift */; };
+		2DFD509928BCDFA200CE8FD2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DFD509828BCDFA200CE8FD2 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		2DFD13B22899308B00348791 /* TransactionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionForm.swift; sourceTree = "<group>"; };
 		2DFD13B4289938B800348791 /*  PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " PhotoPickerView.swift"; sourceTree = "<group>"; };
 		2DFD13B628993E7B00348791 /* TransactionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCard.swift; sourceTree = "<group>"; };
+		2DFD509828BCDFA200CE8FD2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				2D25035E2892784A004A2849 /* ContentView.swift */,
 				2D25036D28927ADD004A2849 /* CreditCardView.swift */,
 				2D25036F28928B25004A2849 /* AddCardForm.swift */,
+				2DFD509828BCDFA200CE8FD2 /* Launch Screen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DFD509928BCDFA200CE8FD2 /* Launch Screen.storyboard in Resources */,
 				2D25036428927850004A2849 /* Preview Assets.xcassets in Resources */,
 				2D25036128927850004A2849 /* Assets.xcassets in Resources */,
 			);
