@@ -17,14 +17,18 @@ struct Onboarding: View {
             }
             if currentPage > 0 {
             Button{
+                withAnimation{
                 ShowOnboarding.toggle()
+                }
             } label: {
-                Text("Gat Started")
+                withAnimation{
+                Text("Get Started")
                     .frame(width: 350, height: 50)
                     .foregroundColor(.white)
                     .background(Color.green)
                     .cornerRadius(20)
                     .padding()
+                }
             }
             }
             HStack{
