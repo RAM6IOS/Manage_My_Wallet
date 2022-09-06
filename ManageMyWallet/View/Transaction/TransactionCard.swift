@@ -92,7 +92,6 @@ struct TransactionCard: View {
         withAnimation {
             do {
                 
-                
                 moc.delete(transaction)
                 
                 try moc.save()

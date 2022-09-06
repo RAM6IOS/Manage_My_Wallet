@@ -13,18 +13,13 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Card.timestamp, ascending: false)],animation: .default)private var cards:FetchedResults<Card>
     @State private var selectedCardHash = -1
+    @State var ShowOnboarding = true
     
     var body: some View {
-       
-            
-            
-                
         NavigationView{
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-               
-                
             ScrollView{
             if !cards.isEmpty {
                 /*
@@ -83,6 +78,10 @@ struct ContentView: View {
                 }
             
             }
+            .fullScreenCover(isPresented:$ShowOnboarding, content: {
+                    Onboarding(ShowOnboarding: $ShowOnboarding)
+                    
+                })
             .navigationTitle("Credit Cards"
                                 
             )
