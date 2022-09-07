@@ -89,13 +89,15 @@ struct ContentView: View {
                 Button(action: {
                        shouldPresentAddCardForm.toggle()
                     }, label: {
-                        Text("+ Card")
+                        Text("+")
+                            .font(.system(size: 25))
+                            .padding(15)
                             .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .bold))
-                            .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
                             .background(Color.black)
-                            .cornerRadius(5)
-                                    })
+                            .clipShape(Circle())
+                                    }
+                        
+                      )
                                 )
             }
         }
