@@ -35,10 +35,11 @@ struct TransactionsList: View {
             } label: {
                 Text("+ Transaction")
                     .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
+                    .frame(width: 350, height: 50)
                     .background(Color(.label))
                     .foregroundColor(Color(.systemBackground))
                     .font(.headline)
-                    .cornerRadius(5)
+                    .cornerRadius(20)
             }
             
             } else{
@@ -50,10 +51,10 @@ struct TransactionsList: View {
                         Text("+ Transaction")
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(Color.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 6)
+                            .padding(.horizontal, 15)
+                            .padding(.vertical, 10)
                             .background(Color(.label))
-                            .cornerRadius(5)
+                            .cornerRadius(20)
                     }
                     
                     Button {
@@ -64,12 +65,12 @@ struct TransactionsList: View {
                             Image(systemName: "line.horizontal.3.decrease.circle")
                             Text("Filter")
                         }
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 6)
-                            .background(Color(.label))
-                            .cornerRadius(5)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(Color.white)
+                        .padding(.horizontal, 15)
+                        .padding(.vertical, 10)
+                        .background(Color(.label))
+                        .cornerRadius(20)
                             .sheet(isPresented: $shouldShowFilterSheet) {
                                 FilterSheet(selectedCategories: selectedCategories) { categories in
                                     

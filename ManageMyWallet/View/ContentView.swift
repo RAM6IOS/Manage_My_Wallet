@@ -62,11 +62,14 @@ struct ContentView: View {
                         shouldPresentAddCardForm.toggle()
                     } label: {
                         Text("+ Add Your First Card")
-                            .foregroundColor(Color.white)
+                            .frame(width: 300, height: 50)
+                            .foregroundColor(.white)
+                            .background(Color.black)
+                            .cornerRadius(20)
+                            .padding()
                     }
-                    .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
-                    .background(Color(.label))
-                    .cornerRadius(5)
+                    
+                    
                 }.font(.system(size: 22, weight: .semibold))
             }
                 Spacer()
@@ -89,13 +92,15 @@ struct ContentView: View {
                 Button(action: {
                        shouldPresentAddCardForm.toggle()
                     }, label: {
-                        Text("+ Card")
+                        Text("+")
+                            .font(.system(size: 25))
+                            .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
                             .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .bold))
-                            .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
                             .background(Color.black)
-                            .cornerRadius(5)
-                                    })
+                            .clipShape(Circle())
+                                    }
+                        
+                      )
                                 )
             }
         }
