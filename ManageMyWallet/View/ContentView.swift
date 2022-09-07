@@ -36,7 +36,7 @@ struct ContentView: View {
                         .padding(.horizontal, 48)
                         .padding(.vertical)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                     Button {
                         shouldPresentAddCardForm.toggle()
                     } label: {

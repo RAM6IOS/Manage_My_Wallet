@@ -1,35 +1,28 @@
 //
 //  TransactionsList.swift
 //  ManageMyWallet
-//
-//  Created by Bouchedoub Rmazi on 3/8/2022.
-//
-
 import SwiftUI
-
 struct TransactionsList: View {
     let card: Card
     init(card: Card) {
         self.card = card
-        
         fetchRequest = FetchRequest<CardTransaction>(entity: CardTransaction.entity(), sortDescriptors: [
             .init(key: "timestamp", ascending: false)
         ], predicate: .init(format: "card == %@", self.card))
     }
     var fetchRequest: FetchRequest<CardTransaction>
     @State var selectedCategories = Set<TransactionCategory>()
-    
     @State private var shouldShowAddTransactionForm = false
     @State private var shouldShowFilterSheet = false
-    //@FetchRequest(sortDescriptors: [])private var transaction:FetchedResults<CardTransaction>
     @Environment(\.managedObjectContext) var moc
     var body: some View {
         
         VStack{
             if fetchRequest.wrappedValue.isEmpty {
             Text("Get started by adding your first transaction")
-                    .foregroundColor(Color.white)
-            
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color.black)
             Button {
                 shouldShowAddTransactionForm.toggle()
             } label: {
@@ -41,7 +34,6 @@ struct TransactionsList: View {
                     .font(.headline)
                     .cornerRadius(20)
             }
-            
             } else{
                 HStack{
                     Spacer()
@@ -56,12 +48,10 @@ struct TransactionsList: View {
                             .background(Color(.label))
                             .cornerRadius(20)
                     }
-                    
                     Button {
                         shouldShowFilterSheet.toggle()
                     } label: {
                         HStack {
-                            
                             Image(systemName: "line.horizontal.3.decrease.circle")
                             Text("Filter")
                         }
@@ -78,21 +68,16 @@ struct TransactionsList: View {
                                 }
                             }
                     }
-                    
-                    
                 }
                 .padding(.horizontal)
             ForEach(filterTransactions(selectedCategories: self.selectedCategories)){ transactio in
                TransactionCard(transaction: transactio)
-                
             }
             }
-            
         }
         .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
            TransactionForm(card: card)
         }
-        
     }
     private func filterTransactions(selectedCategories: Set<TransactionCategory>) -> [CardTransaction] {
         if selectedCategories.isEmpty {
@@ -110,22 +95,15 @@ struct TransactionsList: View {
             return shouldKeep
         }
     }
-    
-    
     struct FilterSheet2: View {
-        
         @State var selectedCategories: Set<TransactionCategory>
         let didSaveFilters: (Set<TransactionCategory>) -> ()
         
         @Environment(\.managedObjectContext) private var viewContext
-
         @FetchRequest(
             sortDescriptors: [NSSortDescriptor(keyPath: \TransactionCategory.timestamp, ascending: false)],
             animation: .default)
         private var categories: FetchedResults<TransactionCategory>
-        
-    //    @State var selectedCategories = Set<TransactionCategory>()
-        
         var body: some View {
             NavigationView {
                 Form {
@@ -136,7 +114,6 @@ struct TransactionsList: View {
                             } else {
                                 selectedCategories.insert(category)
                             }
-                            
                         } label: {
                             HStack(spacing: 12) {
                                 if let data = category.colorData, let uiColor = UIColor.color(data: data) {
@@ -146,7 +123,6 @@ struct TransactionsList: View {
                                         .background(color)
                                 }
                                 Text(category.name ?? "")
-                                
                                     .foregroundColor(Color(.label))
                                 Spacer()
                                 
@@ -160,9 +136,7 @@ struct TransactionsList: View {
                     .navigationBarItems(trailing: saveButton)
             }
         }
-        
         @Environment(\.presentationMode) var presentationMode
-        
         private var saveButton: some View {
             Button {
                 didSaveFilters(selectedCategories)
@@ -170,12 +144,9 @@ struct TransactionsList: View {
             } label: {
                 Text("Save")
             }
-
         }
     }
-
 }
-
 struct TransactionsList_Previews: PreviewProvider {
     static let firstCard: Card? = {
         let context =  DataController().container.viewContext
