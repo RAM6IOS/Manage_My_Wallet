@@ -94,7 +94,7 @@ struct ContentView: View {
                     }, label: {
                         Text("+")
                             .font(.system(size: 25))
-                            .padding(15)
+                            .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
                             .foregroundColor(.white)
                             .background(Color.black)
                             .clipShape(Circle())
