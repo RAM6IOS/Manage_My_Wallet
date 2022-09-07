@@ -28,7 +28,7 @@ struct TransactionsList: View {
         VStack{
             if fetchRequest.wrappedValue.isEmpty {
             Text("Get started by adding your first transaction")
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.black)
             
             Button {
                 shouldShowAddTransactionForm.toggle()
