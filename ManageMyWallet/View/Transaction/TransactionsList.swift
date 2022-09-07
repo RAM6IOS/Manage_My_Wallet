@@ -51,7 +51,7 @@ struct TransactionsList: View {
                         Text("+ Transaction")
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(Color.white)
-                            .padding(.horizontal, 14)
+                            .padding(.horizontal, 15)
                             .padding(.vertical, 10)
                             .background(Color(.label))
                             .cornerRadius(20)
@@ -65,12 +65,12 @@ struct TransactionsList: View {
                             Image(systemName: "line.horizontal.3.decrease.circle")
                             Text("Filter")
                         }
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color.white)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 6)
-                            .background(Color(.label))
-                            .cornerRadius(5)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(Color.white)
+                        .padding(.horizontal, 15)
+                        .padding(.vertical, 10)
+                        .background(Color(.label))
+                        .cornerRadius(20)
                             .sheet(isPresented: $shouldShowFilterSheet) {
                                 FilterSheet(selectedCategories: selectedCategories) { categories in
                                     

@@ -27,8 +27,8 @@ struct PhotoPickerView: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             
             let image = info[.originalImage] as? UIImage
-            let resizedImage = image?.resized(to: .init(width: 400, height: 400))
-            let imageData = resizedImage?.jpegData(compressionQuality: 1)
+          
+            let imageData = image?.jpegData(compressionQuality: 1)
             self.parent.photoData = imageData
             
             picker.dismiss(animated: true)
