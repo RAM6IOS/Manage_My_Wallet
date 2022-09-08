@@ -22,7 +22,7 @@ struct Onboarding: View {
                 Text("Gat Started")
                     .frame(width: 350, height: 50)
                     .foregroundColor(.white)
-                    .background(Color.green)
+                    .background(Color.black)
                     .cornerRadius(20)
                     .padding()
             }
@@ -38,7 +38,7 @@ struct Onboarding: View {
                             .padding()
                             .foregroundColor(.white)
                             .font(.system(size: 25))
-                            .background(Color.green)
+                            .background(Color.black)
                             .clipShape(Circle())
                     }
                 }
@@ -55,7 +55,7 @@ struct Onboarding: View {
                     .padding()
                     .foregroundColor(.white)
                     .font(.system(size: 25))
-                    .background(Color.green)
+                    .background(Color.black)
                     .clipShape(Circle())
                 }
                 }
