@@ -61,20 +61,15 @@ struct ContentView: View {
                 })
             .navigationTitle("Credit Cards"
             )
-            .navigationBarItems(trailing:
-                Button(action: {
-                       shouldPresentAddCardForm.toggle()
-                    }, label: {
-                        Text("+")
-                            .font(.system(size: 25))
-                            .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
-                            .foregroundColor(.white)
-                            .background(Color.black)
-                            .clipShape(Circle())
-                                    }
-                        
-                      )
-                                )
+            .toolbar {
+                ToolbarItem( placement: .navigationBarTrailing) {
+                    Button(action: {shouldPresentAddCardForm.toggle()}) {
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(.black)
+                            .font(.system(size: 30))
+                    }
+                }
+            }
             }
         }
     }
